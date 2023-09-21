@@ -6,13 +6,6 @@ dotenv.config();
 const port = process.env.PORT || 5050;
 const { Pool } = require("pg");
 
-// const db = new Pool({
-//   user: "eklpizsv", // Your database username
-//   host: "surus.db.elephantsql.com", // Your database host
-//   database: "eklpizsv", // Your default database
-//   password: "RzNsu8tc_7dG72yIB-SCeFgWn-CL9O_S", // Your database password
-//   port: 5432, // Your database port (default is 5432 for PostgreSQL)
-// });
 const db = new Pool({
   user: process.env.DB_USER, // Your database username
   host: process.env.DB_HOST, // Your database host
@@ -37,7 +30,18 @@ app.get("/store", async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error("Error executing SQL query:", error);
-    res.status(500).json({ error: "An error occurred" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while displaying all stores" });
+  }
+});
+
+//POST store
+app.post("/store", async (req, res) => {
+  try {
+  } catch (error) {
+    console.error("Error executing sql post query ", error);
+    res.status(500).json({ error: "An error occured while posting new store" });
   }
 });
 
@@ -77,7 +81,26 @@ app.get("/store1-items", async (req, res) => {
     const result = await db.query(queryText, [storeID]);
     res.json(result.rows);
   } catch (error) {
-    console.error("Error to get categories per store", error);
+    console.error("Error to get items per store", error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+//GET store 2 items
+app.get("/store2-items", async (req, res) => {
+  try {
+    const storeID = 2;
+    const queryText = `
+      SELECT i.id AS item_id, i.name AS item_name, i.img AS item_img, i.price AS item_price,
+             c.id AS category_id, c.name AS category_name, c.img AS category_img
+      FROM item AS i
+      INNER JOIN category AS c ON i.category_id = c.id
+      WHERE c.store_id = $1;
+    `;
+    const result = await db.query(queryText, [storeID]);
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error to get items per store", error);
     res.status(500).json({ error: "An error occurred" });
   }
 });
