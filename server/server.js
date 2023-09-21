@@ -7,11 +7,11 @@ const port = process.env.PORT || 5050;
 const { Pool } = require("pg");
 
 const db = new Pool({
-  user: process.env.DB_USER, // Your database username
-  host: process.env.DB_HOST, // Your database host
-  database: process.env.DB_DATABASE, // Your default database
-  password: process.env.DB_PASSWORD, // Your database password
-  port: 5432, // Your database port (default is 5432 for PostgreSQL)
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: 5432,
 });
 
 app.get("/", async (req, res) => {
