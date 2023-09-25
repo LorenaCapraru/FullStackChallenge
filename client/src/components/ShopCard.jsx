@@ -4,7 +4,12 @@ const ShopCard = ({ shop }) => {
   return (
     <div className="shopCard">
       <img src={shop.logo_url} alt="shop logo" />
-      <p>{shop.name}</p>
+      <p>
+        {shop.name
+          .split("")
+          .map((el) => el.toUpperCase())
+          .join("")}
+      </p>
     </div>
   );
 };

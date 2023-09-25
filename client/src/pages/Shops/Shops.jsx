@@ -26,7 +26,6 @@ const Shops = () => {
   console.log(shops);
   return (
     <div className="shopsContainer">
-      Shops:
       {shops.map((shop) => (
         <ShopCard shop={shop} />
       ))}
