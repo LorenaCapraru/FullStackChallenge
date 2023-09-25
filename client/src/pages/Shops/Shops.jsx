@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ShopCard from "../../components/ShopCard";
+
 import "./Shops.css";
 const Shops = () => {
   const [shops, setShops] = useState([]);
@@ -26,9 +27,11 @@ const Shops = () => {
   console.log(shops);
   return (
     <div className="shopsContainer">
-      {shops.map((shop) => (
-        <ShopCard shop={shop} />
-      ))}
+      {load ? (
+        <p>is loading </p>
+      ) : (
+        shops.map((shop) => <ShopCard shop={shop} />)
+      )}
     </div>
   );
 };
