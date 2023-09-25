@@ -178,9 +178,10 @@ app.get("/category/:categoryId/items", async (req, res) => {
   const { categoryId } = Number(req.params.categoryId); // Get the categoryId from the URL parameter
   console.log(req.params.categoryId);
   try {
-    const result = await db.query("SELECT * FROM item WHERE category_id = $1", [
-      categoryId,
-    ]);
+    const result = await db.query(
+      "SELECT * FROM item WHERE category_id = $1 RETURN *",
+      [categoryId]
+    );
     res.json(result.rows);
   } catch (error) {
     console.error("Error fetching items for category", error);
