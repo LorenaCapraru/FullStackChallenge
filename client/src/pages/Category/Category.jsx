@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryCard";
+import "./Category.css";
 const Category = () => {
   const { shopId } = useParams();
   const [categories, setCategories] = useState([]);

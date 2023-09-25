@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemCard from "../../components/ItemCard";
+import "./Items.css";
+
 const Items = () => {
   const { shopId } = useParams();
   const [items, setItems] = useState([]);
@@ -28,7 +30,7 @@ const Items = () => {
   }, [shopId]);
   console.log(items);
   return (
-    <div className="categoriesContainer">
+    <div className="itemsContainer">
       {load ? (
         <p>is loading </p>
       ) : (
