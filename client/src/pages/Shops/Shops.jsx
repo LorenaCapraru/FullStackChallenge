@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-
+import ShopCard from "../../components/ShopCard";
+import "./Shops.css";
 const Shops = () => {
-  const [shops, setShops] = useState("");
+  const [shops, setShops] = useState([]);
+  const [load, setLoading] = useState(true);
+
   useEffect(() => {
     const storeDB = "https://full-stack-challenge-klt3.onrender.com/store";
     const fetchStore = async () => {
@@ -10,14 +13,24 @@ const Shops = () => {
         if (!response.ok) {
           throw new Error("Network response not ok.");
         }
-        const data = response.json();
+        const data = await response.json();
+        setShops(data);
+        setLoading(false);
       } catch (error) {
         console.error("error while fetching data", error);
+        setLoading(true);
       }
     };
     fetchStore();
   }, []);
-
-  return <div>Shops</div>;
+  console.log(shops);
+  return (
+    <div className="shopsContainer">
+      Shops:
+      {shops.map((shop) => (
+        <ShopCard shop={shop} />
+      ))}
+    </div>
+  );
 };
 export default Shops;
