@@ -173,22 +173,6 @@ app.post("/store1-items", async (req, res) => {
   }
 });
 
-// GET items for a specific store category
-app.get("/category/:categoryId/items", async (req, res) => {
-  const { categoryId } = Number(req.params.categoryId); // Get the categoryId from the URL parameter
-  console.log(req.params.categoryId);
-  try {
-    const result = await db.query(
-      "SELECT * FROM item WHERE category_id = $1 RETURN *",
-      [categoryId]
-    );
-    res.json(result.rows);
-  } catch (error) {
-    console.error("Error fetching items for category", error);
-    res.status(500).json({ error: "An error occurred" });
-  }
-});
-
 //GET store 2 items
 app.get("/store2-items", async (req, res) => {
   try {
