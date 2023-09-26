@@ -140,7 +140,7 @@ app.post("/store2-category", async (req, res) => {
 });
 
 //GET store 1 items
-app.get("/store1-items", async (req, res) => {
+app.get("/store/:storeID/:categoryID", async (req, res) => {
   try {
     const storeID = req.params.storeID;
     const categoryID = req.params.categoryID;
