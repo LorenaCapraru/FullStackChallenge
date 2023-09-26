@@ -145,7 +145,7 @@ app.get("/store/:storeID/:categoryID", async (req, res) => {
     const storeID = Number(req.params.storeID);
     const categoryID = Number(req.params.categoryID);
     const queryText = `
-      SELECT * from item 
+      SELECT * from item; 
     `;
     const result = await db.query(queryText, [storeID, categoryID]);
     res.json(result.rows);
