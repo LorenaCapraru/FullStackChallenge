@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ShopCard = ({ shop }) => {
   return (
     <div className="shopCard">
-      <Link to={`/shop/${shop.id}`}>
+      <Link to={`/shop/${shop.id}`} style={{ textDecoration: "none" }}>
         <img src={shop.logo_url} alt="shop logo" />
         <p>
           {shop.name

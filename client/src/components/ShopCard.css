@@ -1,21 +1,34 @@
 .shopCard img {
   width: 50%;
   height: auto;
+  margin-bottom: 40px;
 }
 .shopCard p {
+  position: absolute;
   font-weight: bolder;
   font-size: larger;
+  text-decoration: none;
+  color: black;
+  bottom: 0px;
 }
-
-.shopCard {
-  width: 28%;
-  margin: 1%;
-  padding: 1%;
+.shopCard a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid grey; */
+  cursor: pointer;
+}
+
+.shopCard {
+  position: relative;
+  width: 28%;
+  height: auto;
+  margin: 1%;
+  padding: 1%;
+  background-color: white;
+  /* display: flex;
+  flex-direction: column; */
   border-radius: 10px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
