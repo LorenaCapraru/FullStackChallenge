@@ -149,10 +149,11 @@ app.get("/store/:storeID/:categoryID", async (req, res) => {
              c.id AS category_id, c.name AS category_name, c.img AS category_img
       FROM item AS i
       INNER JOIN category AS c ON i.category_id = c.id
-      WHERE c.store_id = $1 AND i.category = $2;  -- Add the additional condition
+      WHERE c.store_id = $1 AND i.category = $2; 
     `;
     const result = await db.query(queryText, [storeID, categoryID]);
     res.json(result.rows);
+    console.log(result);
   } catch (error) {
     console.error("Error to get items per store", error);
     res.status(500).json({ error: "An error occurred" });
