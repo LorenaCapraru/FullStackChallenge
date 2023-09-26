@@ -142,8 +142,8 @@ app.post("/store2-category", async (req, res) => {
 //GET store 1 items
 app.get("/store/:storeID/:categoryID", async (req, res) => {
   try {
-    const storeID = req.params.storeID;
-    const categoryID = req.params.categoryID;
+    const storeID = Number(req.params.storeID);
+    const categoryID = Number(req.params.categoryID);
     const queryText = `
       SELECT i.id AS item_id, i.name AS item_name, i.img AS item_img, i.price AS item_price,
              c.id AS category_id, c.name AS category_name, c.img AS category_img
