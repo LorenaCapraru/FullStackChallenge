@@ -5,13 +5,14 @@ import "./Items.css";
 
 const Items = () => {
   const { shopId } = useParams();
+  const { categoryId } = useParams();
   const [items, setItems] = useState([]);
   const [load, setLoading] = useState(true);
 
   useEffect(() => {
-    const item = `https://full-stack-challenge-klt3.onrender.com/store${Number(
+    const item = `https://full-stack-challenge-klt3.onrender.com/store/${Number(
       shopId
-    )}-items`;
+    )}/${Number(categoryId)}`;
     const fetchItems = async () => {
       try {
         const response = await fetch(item);
@@ -27,7 +28,7 @@ const Items = () => {
       }
     };
     fetchItems();
-  }, [shopId]);
+  }, [shopId, categoryId]);
   console.log(items);
   return (
     <div className="itemsContainer">

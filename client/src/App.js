@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Shops />} />
         <Route path="/shop/:shopId" element={<Category />} />
-        <Route path="/shop/:shopId/items" element={<Items />} />
+        <Route path="/shop/:shopId/:categoryId" element={<Items />} />
 
         {/* <Link to={`/items/${category.id}/`}> */}
       </Routes>

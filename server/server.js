@@ -146,7 +146,7 @@ app.get("/store/:storeID/:categoryID", async (req, res) => {
     const categoryID = Number(req.params.categoryID);
     console.log(storeID);
     const queryText = `
-      SELECT * from item INNER JOIN category ON item.category_id = category.id where  category.store_id = $1 AND item.category_id=$2; 
+     SELECT item.id, item.name, item.img, item.price from item inner JOIN category ON item.category_id = category.id where  category.store_id = $1 AND category.id=$2;         
     `;
     const result = await db.query(queryText, [storeID, categoryID]);
     res.json(result.rows);
