@@ -31,7 +31,7 @@ const Category = () => {
   return (
     <div className="categoriesContainer">
       {load ? (
-        <p>is loading </p>
+        <div className="lds-dual-ring"></div>
       ) : (
         categories.map((category) => (
           <CategoryCard shopId={shopId} category={category} />
