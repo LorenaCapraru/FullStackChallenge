@@ -142,12 +142,13 @@ app.post("/store2-category", async (req, res) => {
 //GET store 1 items
 app.get("/store/:storeID/:categoryID", async (req, res) => {
   try {
-    // const storeID = Number(req.params.storeID);
-    // const categoryID = Number(req.params.categoryID);
+    const storeID = Number(req.params.storeID);
+    const categoryID = Number(req.params.categoryID);
+    console.log(storeID);
     const queryText = `
-      SELECT * from item; 
+      SELECT * from item INNER JOIN category ON item.category_id = category.id where  category.store_id = $1 AND item.category_id=$2; 
     `;
-    const result = await db.query(queryText);
+    const result = await db.query(queryText, [storeID, categoryID]);
     res.json(result.rows);
     console.log(result);
   } catch (error) {
