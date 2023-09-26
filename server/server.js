@@ -142,15 +142,16 @@ app.post("/store2-category", async (req, res) => {
 //GET store 1 items
 app.get("/store1-items", async (req, res) => {
   try {
-    const storeID = 1;
+    const storeID = req.params.storeID;
+    const categoryID = req.params.categoryID;
     const queryText = `
       SELECT i.id AS item_id, i.name AS item_name, i.img AS item_img, i.price AS item_price,
              c.id AS category_id, c.name AS category_name, c.img AS category_img
       FROM item AS i
       INNER JOIN category AS c ON i.category_id = c.id
-      WHERE c.store_id = $1;
+      WHERE c.store_id = $1 AND i.category = $2;  -- Add the additional condition
     `;
-    const result = await db.query(queryText, [storeID]);
+    const result = await db.query(queryText, [storeID, categoryID]);
     res.json(result.rows);
   } catch (error) {
     console.error("Error to get items per store", error);
