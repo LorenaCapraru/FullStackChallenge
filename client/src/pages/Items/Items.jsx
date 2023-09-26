@@ -32,7 +32,7 @@ const Items = () => {
   return (
     <div className="itemsContainer">
       {load ? (
-        <p>is loading </p>
+        <div className="lds-dual-ring"></div>
       ) : (
         items.map((item) => <ItemCard item={item} />)
       )}
