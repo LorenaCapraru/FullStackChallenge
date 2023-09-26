@@ -2,7 +2,7 @@ import "./ItemCard.css";
 
 const ItemCard = ({ item }) => {
   return (
-    <div className="shopCard">
+    <div className="itemCard">
       <img src={item.item_img} alt="category description" />
       <p>
         {item.item_name
@@ -10,7 +10,7 @@ const ItemCard = ({ item }) => {
           .map((el) => el.toUpperCase())
           .join("")}
       </p>
-      <p>{item.item_price}</p>
+      <span>£{item.item_price}</span>
     </div>
   );
 };
