@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ShopCard from "../../components/ShopCard";
-
 import "./Shops.css";
+
 const Shops = () => {
   const [shops, setShops] = useState([]);
   const [load, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const Shops = () => {
   return (
     <div className="shopsContainer">
       {load ? (
-        <p>is loading </p>
+        <div className="lds-dual-ring"></div>
       ) : (
         shops.map((shop) => <ShopCard shop={shop} />)
       )}
