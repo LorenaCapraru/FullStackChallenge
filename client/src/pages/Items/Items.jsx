@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemCard from "../../components/ItemCard";
 import "./Items.css";
+import ButtonItem from "../../components/ButtonItem";
 
 const Items = () => {
   const { shopId } = useParams();
   const { categoryId } = useParams();
   const [items, setItems] = useState([]);
   const [load, setLoading] = useState(true);
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
-    const item = `https://full-stack-challenge-klt3.onrender.com/store/${Number(
-      shopId
-    )}/${Number(categoryId)}`;
+    const item = `https://full-stack-challenge-klt3.onrender.com/store${Number(
+      shopId)}-items}`;
     const fetchItems = async () => {
       try {
         const response = await fetch(item);
@@ -35,7 +36,21 @@ const Items = () => {
       {load ? (
         <div className="lds-dual-ring"></div>
       ) : (
-        items.map((item) => <ItemCard item={item} />)
+        <div className={click === true ? "clickTrue" : "shopPage"}>
+          <ButtonItem
+            items={items}
+            setItems={setItems}
+            click={click}
+            setClick={setClick}
+            shopId={shopId}
+            categoryId={categoryId}
+          />
+          <div className="shopsContainer">
+            {items.map((item) => (
+              <ItemCard item={item} />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

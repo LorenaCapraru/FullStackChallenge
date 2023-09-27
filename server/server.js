@@ -158,9 +158,9 @@ app.get("/store/:storeID/:categoryID", async (req, res) => {
 });
 
 //POST store 1 items
-app.post("/store1-items", async (req, res) => {
+app.post("/store/:storeID/:categoryID", async (req, res) => {
   try {
-    const categoryID = 1;
+    const categoryID = req.params.storeID;
     const { name, img, price } = req.body;
     const queryText =
       "insert into item (name, img, price, category_id) values ($1, $2, $3, $4) RETURNING *";
