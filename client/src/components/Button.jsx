@@ -1,6 +1,6 @@
 import "./Button.css";
 import Form from "./Form";
-const Button = ({ click, setClick }) => {
+const Button = ({ click, setClick, shops, setShops }) => {
   const handleClick = () => {
     click === false ? setClick(true) : setClick(false);
   };
@@ -9,7 +9,7 @@ const Button = ({ click, setClick }) => {
       <button onClick={handleClick}>Add a Store</button>
       {click === false ? null : (
         <div>
-          <Form />
+          <Form shops={shops} setShops={setShops} />
         </div>
       )}
     </>
