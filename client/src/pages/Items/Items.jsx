@@ -12,8 +12,9 @@ const Items = () => {
   const [click, setClick] = useState(false);
 
   useEffect(() => {
-    const item = `https://full-stack-challenge-klt3.onrender.com/store${Number(
-      shopId)}-items}`;
+    const item = `https://full-stack-challenge-klt3.onrender.com/store/${Number(
+      shopId
+    )}/${Number(categoryId)}`;
     const fetchItems = async () => {
       try {
         const response = await fetch(item);
@@ -47,7 +48,7 @@ const Items = () => {
           />
           <div className="shopsContainer">
             {items.map((item) => (
-              <ItemCard item={item} />
+              <ItemCard item={item} click={click} />
             ))}
           </div>
         </div>

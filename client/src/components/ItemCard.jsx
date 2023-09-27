@@ -1,16 +1,16 @@
 import "./ItemCard.css";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, click }) => {
   return (
-    <div className="itemCard">
+    <div className={click === true ? "clickCardTrue" : "itemCard"}>
       <img src={item.img} alt="category description" />
-      {/* <p>
+      <p>
         {item.name
           .split("")
           .map((el) => el.toUpperCase())
           .join("")}
-      </p> */}
-      <span>£{item.price}</span>
+      </p>
+      <p>£{item.price}</p>
     </div>
   );
 };

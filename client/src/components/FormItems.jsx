@@ -3,6 +3,7 @@ import "./Form.css";
 
 function FormItem({ items, setItems, shopId, categoryId }) {
   shopId = Number(shopId);
+  categoryId = Number(categoryId);
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
   const [price, setPrice] = useState(null);
