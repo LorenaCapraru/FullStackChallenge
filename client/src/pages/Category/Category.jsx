@@ -29,8 +29,7 @@ const Category = () => {
       }
     };
     fetchCategory();
-  }, [shopId]);
-  console.log(categories);
+  }, [shopId, categories]);
   return (
     <div className="categoriesContainer">
       {load ? (

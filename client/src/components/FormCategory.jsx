@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./Form.css";
-function FormCategory({ shops, setShops }) {
+import { useParams } from "react-router-dom";
+
+function FormCategory({ categories, setCategories }) {
+  const { shopId } = useParams();
+
   const [name, setName] = useState("");
   const [logo_url, setLogoURL] = useState("");
 
@@ -19,7 +23,9 @@ function FormCategory({ shops, setShops }) {
     if (name && name.length > 0 && logo_url && logo_url.length > 0) {
       try {
         const response = await fetch(
-          "https://full-stack-challenge-klt3.onrender.com/store",
+          `https://full-stack-challenge-klt3.onrender.com/store/${Number(
+            shopId
+          )}/category`,
           {
             method: "POST",
             headers: {
@@ -31,16 +37,14 @@ function FormCategory({ shops, setShops }) {
 
         if (response.ok) {
           const data = await response.json();
-          console.log("dataa", data.store);
-
-          alert("Store added successfully!");
+          console.log("data cat", data.category);
+          alert("Category added successfully!");
           setName("");
           setLogoURL("");
-          //   shops = shops.push(data.store);
-          setShops([...shops, data.store]);
+          setCategories([...categories, data.category]);
         } else {
-          console.error("Failed to create a store.");
-          alert("Failed to create a store!");
+          console.error("Failed to create a Category.");
+          alert("Failed to create a Category!");
         }
       } catch (error) {
         console.error("An error occurred while sending the request: ", error);
