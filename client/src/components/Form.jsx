@@ -36,7 +36,6 @@ function Form({ shops, setShops }) {
           alert("Store added successfully!");
           setName("");
           setLogoURL("");
-          //   shops = shops.push(data.store);
           setShops([...shops, data.store]);
         } else {
           console.error("Failed to create a store.");

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "./Form.css";
-import { useParams } from "react-router-dom";
 
-function FormCategory({ categories, setCategories }) {
-  const { shopId } = useParams();
-
+function FormCategory({ categories, setCategories, shopId }) {
+  shopId = Number(shopId);
   const [name, setName] = useState("");
-  const [logo_url, setLogoURL] = useState("");
+  const [img, setImg] = useState("");
 
   const handleInputNameChange = (e) => {
     e.preventDefault();
@@ -15,12 +13,12 @@ function FormCategory({ categories, setCategories }) {
 
   const handleInputLogoChange = (e) => {
     e.preventDefault();
-    setLogoURL(e.target.value);
+    setImg(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && name.length > 0 && logo_url && logo_url.length > 0) {
+    if (name && name.length > 0 && img && img.length > 0) {
       try {
         const response = await fetch(
           `https://full-stack-challenge-klt3.onrender.com/store/${Number(
@@ -31,17 +29,17 @@ function FormCategory({ categories, setCategories }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, logo_url }),
+            body: JSON.stringify({ name, img }),
           }
         );
 
         if (response.ok) {
           const data = await response.json();
-          console.log("data cat", data.category);
           alert("Category added successfully!");
           setName("");
-          setLogoURL("");
-          setCategories([...categories, data.category]);
+          setImg("");
+          console.log(data);
+          setCategories([...categories, data.store]);
         } else {
           console.error("Failed to create a Category.");
           alert("Failed to create a Category!");
@@ -51,11 +49,10 @@ function FormCategory({ categories, setCategories }) {
       }
     }
   };
-
   return (
     <div className="form">
       <h1>Add a New Category</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="form-group">
           <label htmlFor="name">Name*:</label>
           <input
@@ -73,7 +70,7 @@ function FormCategory({ categories, setCategories }) {
             type="url"
             id="logo_url"
             name="logo_url"
-            value={logo_url}
+            value={img}
             onChange={handleInputLogoChange}
             required
           />

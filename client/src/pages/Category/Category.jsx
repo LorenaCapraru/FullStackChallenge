@@ -7,16 +7,17 @@ import "./Category.css";
 const Category = () => {
   const { shopId } = useParams();
   const [categories, setCategories] = useState([]);
-  const [load, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [click, setClick] = useState(false);
 
   useEffect(() => {
-    const category = `https://full-stack-challenge-klt3.onrender.com/store${Number(
+    const categoryUrl = `https://full-stack-challenge-klt3.onrender.com/store${Number(
       shopId
     )}-category`;
+
     const fetchCategory = async () => {
       try {
-        const response = await fetch(category);
+        const response = await fetch(categoryUrl);
         if (!response.ok) {
           throw new Error("Network response not ok.");
         }
@@ -25,14 +26,16 @@ const Category = () => {
         setLoading(false);
       } catch (error) {
         console.error("error while fetching data", error);
-        setLoading(true);
+        setLoading(false); // Set loading to false in case of an error
       }
     };
+
     fetchCategory();
-  }, [shopId, categories]);
+  }, [shopId]);
+
   return (
     <div className="categoriesContainer">
-      {load ? (
+      {loading ? (
         <div className="lds-dual-ring"></div>
       ) : (
         <div className={click === true ? "clickTrue" : "shopPage"}>
@@ -41,10 +44,16 @@ const Category = () => {
             setCategories={setCategories}
             click={click}
             setClick={setClick}
+            shopId={shopId}
           />
           <div className="shopsContainer">
             {categories.map((category) => (
-              <CategoryCard shopId={shopId} category={category} click={click} />
+              <CategoryCard
+                shopId={shopId}
+                category={category}
+                click={click}
+                key={category.id}
+              />
             ))}
           </div>
         </div>
@@ -52,4 +61,5 @@ const Category = () => {
     </div>
   );
 };
+
 export default Category;
