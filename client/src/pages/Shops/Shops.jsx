@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import ShopCard from "../../components/ShopCard";
 import "./Shops.css";
+import Button from "../../components/Button";
 
 const Shops = () => {
   const [shops, setShops] = useState([]);
   const [load, setLoading] = useState(true);
+
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
     const storeDB = "https://full-stack-challenge-klt3.onrender.com/store";
@@ -26,11 +29,18 @@ const Shops = () => {
   }, []);
   console.log(shops);
   return (
-    <div className="shopsContainer">
+    <div>
       {load ? (
         <div className="lds-dual-ring"></div>
       ) : (
-        shops.map((shop) => <ShopCard shop={shop} />)
+        <div className={click === true ? "clickTrue" : "shopPage"}>
+          <Button click={click} setClick={setClick} />
+          <div className="shopsContainer">
+            {shops.map((shop) => (
+              <ShopCard click={click} shop={shop} />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
