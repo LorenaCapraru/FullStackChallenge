@@ -1,27 +1,51 @@
 import React, { useState } from "react";
 import "./Form.css";
-function Form() {
-  const [formData, setFormData] = useState({
-    name: "",
-    logo_url: "",
-  });
+function Form({ shops, setShops }) {
+  const [name, setName] = useState("");
+  const [logo_url, setLogoURL] = useState("");
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleInputNameChange = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
   };
 
-  // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form Data:", formData);
-    setFormData({
-      name: "",
-      logo_url: "",
-    });
+  const handleInputLogoChange = (e) => {
+    e.preventDefault();
+    setLogoURL(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (name && name.length > 0 && logo_url && logo_url.length > 0) {
+      try {
+        const response = await fetch(
+          "https://full-stack-challenge-klt3.onrender.com/store",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, logo_url }),
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("dataa", data.store);
+
+          alert("Store added successfully!");
+          setName("");
+          setLogoURL("");
+          //   shops = shops.push(data.store);
+          setShops([...shops, data.store]);
+        } else {
+          console.error("Failed to create a store.");
+          alert("Failed to create a store!");
+        }
+      } catch (error) {
+        console.error("An error occurred while sending the request: ", error);
+      }
+    }
   };
 
   return (
@@ -34,8 +58,8 @@ function Form() {
             type="text"
             id="name"
             name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+            value={name}
+            onChange={handleInputNameChange}
             required
           />
         </div>
@@ -45,12 +69,12 @@ function Form() {
             type="url"
             id="logo_url"
             name="logo_url"
-            value={formData.logo_url}
-            onChange={handleInputChange}
+            value={logo_url}
+            onChange={handleInputLogoChange}
             required
           />
         </div>
-        <button type="submit" className="submit">
+        <button type="submit" className="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>
