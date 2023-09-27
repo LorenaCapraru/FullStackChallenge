@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryCard";
+import ButtonCategory from "../../components/ButtonCategory.jsx";
 import "./Category.css";
+
 const Category = () => {
   const { shopId } = useParams();
   const [categories, setCategories] = useState([]);
   const [load, setLoading] = useState(true);
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
     const category = `https://full-stack-challenge-klt3.onrender.com/store${Number(
@@ -33,9 +36,19 @@ const Category = () => {
       {load ? (
         <div className="lds-dual-ring"></div>
       ) : (
-        categories.map((category) => (
-          <CategoryCard shopId={shopId} category={category} />
-        ))
+        <div className={click === true ? "clickTrue" : "shopPage"}>
+          <ButtonCategory
+            categories={categories}
+            setCategories={setCategories}
+            click={click}
+            setClick={setClick}
+          />
+          <div className="shopsContainer">
+            {categories.map((category) => (
+              <CategoryCard shopId={shopId} category={category} click={click} />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
