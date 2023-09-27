@@ -27,14 +27,18 @@ const Shops = () => {
     };
     fetchStore();
   }, []);
-  console.log(shops);
   return (
     <div>
       {load ? (
         <div className="lds-dual-ring"></div>
       ) : (
         <div className={click === true ? "clickTrue" : "shopPage"}>
-          <Button click={click} setClick={setClick} />
+          <Button
+            shops={shops}
+            setShops={setShops}
+            click={click}
+            setClick={setClick}
+          />
           <div className="shopsContainer">
             {shops.map((shop) => (
               <ShopCard click={click} shop={shop} />
