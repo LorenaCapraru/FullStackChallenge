@@ -85,9 +85,9 @@ app.get("/store1-category", async (req, res) => {
 });
 
 //POST store 1 Category
-app.post("/store1-category", async (req, res) => {
+app.post("/store/:storeID/category", async (req, res) => {
   try {
-    const storeID = 1;
+    const storeID = Number(req.params.storeID);
     const { name, img } = req.body;
     if (!name || !img) {
       return res.status(400).json({ error: "Name and img are required." });
