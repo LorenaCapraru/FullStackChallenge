@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryCard";
 import ButtonCategory from "../../components/ButtonCategory.jsx";
-import "./Category.css";
 
 const Category = () => {
   const { shopId } = useParams();
