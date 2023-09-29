@@ -21,6 +21,7 @@ const Category = () => {
           throw new Error("Network response not ok.");
         }
         const data = await response.json();
+        console.log("categories", data);
         setCategories(data);
         setLoading(false);
       } catch (error) {
