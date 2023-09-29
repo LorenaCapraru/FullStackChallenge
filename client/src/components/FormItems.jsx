@@ -34,13 +34,13 @@ function FormItem({ items, setItems, shopId, categoryId }) {
     ) {
       try {
         const response = await fetch(
-          `https://full-stack-challenge-klt3.onrender.com/store/${shopId}/${categoryId}`,
+          `https://full-stack-challenge-klt3.onrender.com/store/${categoryId}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, img, price, categoryId }),
+            body: JSON.stringify({ name, img, price }),
           }
         );
 
