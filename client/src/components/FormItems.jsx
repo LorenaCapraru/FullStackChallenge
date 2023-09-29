@@ -40,7 +40,7 @@ function FormItem({ items, setItems, shopId, categoryId }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, img, price }),
+            body: JSON.stringify({ name, img, price, categoryId }),
           }
         );
 
