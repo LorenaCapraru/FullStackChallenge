@@ -14,15 +14,20 @@
 .shopCard a {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   cursor: pointer;
 }
 
 .shopCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
   position: relative;
   width: 28%;
-  height: auto;
+  height: 350px;
   margin: 1%;
   padding: 1%;
   background-color: white;
@@ -32,9 +37,13 @@
 }
 
 .clickCardTrue {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   position: relative;
   width: 28%;
-  height: auto;
+  height: 350px;
   margin: 1%;
   padding: 1%;
   border-radius: 10px;
