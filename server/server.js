@@ -110,10 +110,10 @@ app.post("/store/:storeID/category", async (req, res) => {
 });
 
 //GET store 1 items
-app.get("/store/:storeID/:categoryID", async (req, res) => {
+app.get("/store/:storeID/:categoryId", async (req, res) => {
   try {
     const storeID = Number(req.params.storeID);
-    const categoryID = Number(req.params.categoryID);
+    const categoryID = Number(req.params.categoryId);
     const queryText = `
      SELECT item.id, item.name, item.img, item.price from item inner JOIN category ON item.category_id = category.id where  category.store_id = $1 AND category.id=$2;         
     `;

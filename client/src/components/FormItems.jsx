@@ -24,7 +24,14 @@ function FormItem({ items, setItems, shopId, categoryId }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && name.length > 0 && img && img.length > 0) {
+    if (
+      name &&
+      name.length > 0 &&
+      img &&
+      img.length > 0 &&
+      price &&
+      price.length > 0
+    ) {
       try {
         const response = await fetch(
           `https://full-stack-challenge-klt3.onrender.com/store/${Number(
@@ -55,6 +62,8 @@ function FormItem({ items, setItems, shopId, categoryId }) {
       }
     }
   };
+  console.log("shopid", shopId);
+  console.log("catid", categoryId);
   return (
     <div className="form">
       <h1>Add a New Item</h1>

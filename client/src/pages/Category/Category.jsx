@@ -10,9 +10,9 @@ const Category = () => {
   const [click, setClick] = useState(false);
 
   useEffect(() => {
-    const categoryUrl = `https://full-stack-challenge-klt3.onrender.com/store${Number(
+    const categoryUrl = `https://full-stack-challenge-klt3.onrender.com/store/${Number(
       shopId
-    )}-category`;
+    )}/category`;
 
     const fetchCategory = async () => {
       try {
