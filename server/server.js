@@ -132,7 +132,7 @@ app.post("/store/:storeID/:categoryId", async (req, res) => {
     const categoryID = Number(req.params.categoryId);
     const { name, img, price } = req.body;
     const queryText =
-      "insert into item (name, img, price, category_id) values ($1, $2, $3, $4) RETURNING *";
+      "INSERT INTO item (name, img, price, category_id) values ($1, $2, $3, $4) RETURNING *";
     const { rows } = await db.query(queryText, [name, img, price, categoryID]);
     res.json({ message: "Store created successfully", store: rows[0] });
   } catch (error) {
