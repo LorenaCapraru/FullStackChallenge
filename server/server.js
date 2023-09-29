@@ -109,7 +109,7 @@ app.post("/store/:storeID/category", async (req, res) => {
   }
 });
 
-//GET store 1 items
+//GET store/category items
 app.get("/store/:storeID/:categoryId", async (req, res) => {
   try {
     const storeID = Number(req.params.storeID);
@@ -126,8 +126,8 @@ app.get("/store/:storeID/:categoryId", async (req, res) => {
   }
 });
 
-//POST store 1 items
-app.post("/store/:categoryId", async (req, res) => {
+//POST store/category 1 items
+app.post("/category/:categoryId", async (req, res) => {
   try {
     const categoryID = Number(req.params.categoryId);
     const { name, img, price } = req.body;

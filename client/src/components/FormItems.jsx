@@ -34,7 +34,7 @@ function FormItem({ items, setItems, shopId, categoryId }) {
     ) {
       try {
         const response = await fetch(
-          `https://full-stack-challenge-klt3.onrender.com/store/${categoryId}`,
+          `https://full-stack-challenge-klt3.onrender.com/category/${categoryId}`,
           {
             method: "POST",
             headers: {
