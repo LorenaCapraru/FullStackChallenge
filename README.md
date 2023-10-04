@@ -1,20 +1,20 @@
-**Database Schema**
+***Database Schema***
 The database consists of three tables: store, category, and item, each with its respective fields.
 
-*Store Table*
+**Store Table**
 
 id (Primary Key): Unique identifier for each store.
 name: The name of the store.
 logo_url: URL or path to the store's logo image.
 
-*Category Table*
+**Category Table**
 
 id (Primary Key): Unique identifier for each category.
 name: The name of the category.
 img: URL or path to the category image.
 store_id (Foreign Key): References the id of the store to which this category belongs.
 
-*Item Table*
+**Item Table**
 
 id (Primary Key): Unique identifier for each item.
 name: The name of the item.
