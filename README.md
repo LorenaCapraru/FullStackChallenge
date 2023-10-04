@@ -1,4 +1,4 @@
-***Database Schema***
+****Database Schema****
 The database consists of three tables: store, category, and item, each with its respective fields.
 
 **Store Table**
