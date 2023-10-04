@@ -18,4 +18,4 @@ git clone <repository-url>
 
 ## Install backend dependencies.
 
-npm install
+```npm install
