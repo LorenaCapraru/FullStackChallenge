@@ -13,9 +13,9 @@ To run this application, you will need the following software installed on your 
 
 1. Clone the repository to your local machine.
 
-```bash
+```
 git clone <repository-url>```
 
 ## Install backend dependencies.
-```bash
+```
 npm install```
