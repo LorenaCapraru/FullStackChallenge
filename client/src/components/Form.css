@@ -1,6 +1,6 @@
 .form {
   position: absolute;
-  left: 61%;
+  left: 12%;
   width: 20%;
   min-height: 42%;
   background-color: white;
@@ -49,4 +49,16 @@ input {
   display: flex;
   flex-direction: column;
   padding: 2%;
+}
+
+@media screen and (max-width: 575px) {
+  .form {
+    width: 67%;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .form {
+    width: 37%;
+  }
 }
