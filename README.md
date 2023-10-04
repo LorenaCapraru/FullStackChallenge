@@ -21,4 +21,5 @@ name: The name of the item.
 img: URL or path to the item image.
 price: The price of the item.
 category_id (Foreign Key): References the id of the category to which this item belongs.
+
 This schema represents a basic structure for storing data related to clothing shopping stores, their categories, and the items within those categories
