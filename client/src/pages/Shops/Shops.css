@@ -41,7 +41,7 @@
 
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   z-index: 2;
 }
 @keyframes lds-dual-ring {
@@ -51,7 +51,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
 }
