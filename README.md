@@ -17,5 +17,5 @@ To run this application, you will need the following software installed on your 
 git clone <repository-url>
 
 ## Install backend dependencies.
-```bash
-npm install```
+bash
+npm install
