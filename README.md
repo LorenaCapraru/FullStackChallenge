@@ -29,11 +29,7 @@ npm start
 ## Data Structure
   Each store can have multiple categories.
   Each category can have multiple items.
-  The ERD diagram below describes the relationship between tables:
-  
-![Untitled Diagram](https://github.com/LorenaCapraru/full-stack-challenge/assets/108892538/8af002db-7aa4-4fd9-9136-aadee6a03f8d)
 
-  
 
 ## Project Structure
 The project is organized into the following directories:
@@ -44,6 +40,10 @@ The project is organized into the following directories:
 # Database Schema
 
 The database consists of three tables: `store`, `category`, and `item`, each with its respective fields.
+
+The ERD diagram below describes the relationship between tables:
+  
+  ![Untitled Diagram drawio](https://github.com/LorenaCapraru/full-stack-challenge/assets/108892538/13ebc95d-2aa4-4452-a938-f3f1c8bb35e3)
 
 ## Store Table
 
