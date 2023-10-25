@@ -2,6 +2,10 @@
 
 This is a full stack admin panel application built using React for the frontend and Node.js with Express and PostgreSQL for the backend. The application allows users to manage a list of clothing shopping stores, add categories, and items to each store, and view a list of available stores in a well-optimized table.
 
+<img width="1440" alt="Screenshot 2023-10-25 at 14 12 08" src="https://github.com/LorenaCapraru/full-stack-challenge/assets/108892538/52812ebe-4c3f-4903-9dd9-2b6fbb60cf09">
+
+
+
 ## Requirements
 
 To run this application, you will need the following software installed on your machine:
@@ -13,23 +17,20 @@ To run this application, you will need the following software installed on your 
 
 1. Clone the repository to your local machine.
 
-```
+```bash
 git clone <repository-url>
 ```
 
 2. Install backend dependencies.
 
-``` npm install ```
+```bash
+npm install
+```
 
 3. Run the Node.js server.
 ```
 npm start
 ```
-
-## Data Structure
-  Each store can have multiple categories.
-  Each category can have multiple items.
-
 
 ## Project Structure
 The project is organized into the following directories:
@@ -42,8 +43,13 @@ The project is organized into the following directories:
 The database consists of three tables: `store`, `category`, and `item`, each with its respective fields.
 
 The ERD diagram below describes the relationship between tables:
-  
-  ![Untitled Diagram drawio](https://github.com/LorenaCapraru/full-stack-challenge/assets/108892538/13ebc95d-2aa4-4452-a938-f3f1c8bb35e3)
+
+
+  ![Untitled Diagram (1)](https://github.com/LorenaCapraru/full-stack-challenge/assets/108892538/df0f93c6-6a57-46fa-b382-f8d4a20e19c7)
+
+## Data Structure
+  Each store can have multiple categories.
+  Each category can have multiple items.
 
 ## Store Table
 
